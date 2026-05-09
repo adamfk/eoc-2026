@@ -1,0 +1,65 @@
+@startuml V2_ControlSm
+
+' ///////////////////////////// STYLES /////////////////////////////
+' Define some colors for the states. Totally optional.
+skinparam state {
+    ' dark style:
+    BackgroundColor<<dark>> 545454
+    FontColor<<dark>> white
+}
+
+' //////////////////////// STATE ORGANIZATION ///////////////////////
+' Note: StateSmith treats state names and events as case insensitive.
+' More info: https://github.com/StateSmith/StateSmith/wiki/PlantUML
+
+state OFF <<dark>>
+
+state ON_GROUP {
+    state ON1
+    state ON2
+    state ON3
+}
+
+' ///////////////////////// STATE HANDLERS /////////////////////////
+' Syntax https://github.com/StateSmith/StateSmith/wiki/Behaviors
+
+[*] -> OFF
+
+'OFF
+OFF: enter / Lights_off();
+ON_GROUP --> OFF : OFF
+
+' Try toggling (un/comment) below 3 lines to add PRE state between OFF and ON1.
+OFF --> ON1: INC
+' OFF --> PRE: INC
+' PRE --> ON1: INC
+
+'ON1
+ON1: enter / Lights_set(1,0,0);
+ON1 -up-> OFF : DIM
+ON1 -down-> ON2 : INC
+
+'ON2
+ON2: enter / Lights_set(1,1,0);
+ON2: enter / count = 0;
+ON2: 1. INC / count++;
+ON2 -up-> ON1 : DIM
+ON2 -down-> ON3 : INC [count >= 3]
+
+'ON3
+ON3: enter / Lights_set(1,1,1);
+ON3 -up-> ON2 : DIM
+
+' //////////////////////// StateSmith config ////////////////////////
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+' Feel free to remove or modify it as needed.
+
+/'! $CONFIG : toml
+    [RenderConfig.C]
+    CFileExtension = ".inc"
+
+    [SmRunnerSettings]
+    transpilerId = "C99"
+'/
+@enduml

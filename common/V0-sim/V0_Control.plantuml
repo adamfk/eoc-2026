@@ -1,0 +1,30 @@
+@startuml V0_Control
+state OFF
+state ON1
+state ON2
+state ON3
+
+[*] -> OFF
+OFF --> ON1: INC
+ON1 -up-> OFF : DIM
+ON1 -down-> ON2 : INC
+ON2 -up-> ON1 : DIM
+ON2 -down-> ON3 : INC [count >= 3]
+ON3 -up-> ON2 : DIM
+
+OFF: enter / Lights_off();
+ON1: enter / Lights_set(1,0,0);
+ON2: enter / Lights_set(1,1,0);
+ON2: enter / count = 0;
+ON2: 1. INC / count++;
+ON3: enter / Lights_set(1,1,1);
+
+' //////////////////////// StateSmith config ////////////////////////
+' The below special comment block sets the StateSmith configuration.
+' More info: https://github.com/StateSmith/StateSmith/issues/335
+
+/'! $CONFIG : toml
+    [SmRunnerSettings]
+    transpilerId = "JavaScript" # so as to not be confusing with .c/h
+'/
+@enduml
