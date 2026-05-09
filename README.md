@@ -83,20 +83,27 @@ Why do we do use `RETURN_IF_FAILURE()` so much? That's just one approach (see al
 
 This is particularly helpful when you have a failure in your CI/CD pipeline.
 
-Compare the output of these two failure messages:
+Compare the output of these two failure messages.
 
-<table>
-  <thead>
-    <tr>
-      <th width="50%">Without <code>RETURN_IF_FAILURE()</code></th>
-      <th width="50%">With <code>RETURN_IF_FAILURE()</code></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="top">
-<pre>
+### ✅ With `RETURN_IF_FAILURE()` or `ASSERT_CALL()`
+Simple, focused and direct.
+```
+[ RUN      ] ControlTestsV2.On3_DimTo_On2
+/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:42: Failure
+Failed
+Expected state `ON1`, but was in state `PRE`.
+Google Test trace:
+/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:36: AssertState(expected_state:'3')
+/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:59: ReachOn1( )
+/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:68: ReachOn2( )
+/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:78: ReachOn3( )
 
+[  FAILED  ] ControlTestsV2.On3_DimTo_On2 (0 ms)
+```
+
+## Without `RETURN_IF_FAILURE()`
+A lot of repeated noise. Developers often waste time trying to figure out what to focus on.
+```
 [ RUN      ] ControlTestsV2.On3_DimTo_On2
 /home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:42: Failure
 Failed
@@ -171,26 +178,4 @@ Google Test trace:
 /home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:30: AssertLights(lights:'##_')
 
 [  FAILED  ] ControlTestsV2.On3_DimTo_On2 (0 ms)
-
-</pre>
-      </td>
-      <td valign="top">
-<pre>
-
-[ RUN      ] ControlTestsV2.On3_DimTo_On2
-/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:42: Failure
-Failed
-Expected state `ON1`, but was in state `PRE`.
-Google Test trace:
-/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:36: AssertState(expected_state:'3')
-/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:59: ReachOn1( )
-/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:68: ReachOn2( )
-/home/afk/code/eoc-2026/ex1/tests/ControlTestsV2.cpp:78: ReachOn3( )
-
-[  FAILED  ] ControlTestsV2.On3_DimTo_On2 (0 ms)
-</pre>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+```
