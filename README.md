@@ -101,7 +101,7 @@ Google Test trace:
 [  FAILED  ] ControlTestsV2.On3_DimTo_On2 (0 ms)
 ```
 
-## Without `RETURN_IF_FAILURE()`
+## 🤔 Without `RETURN_IF_FAILURE()`
 A lot of repeated noise. Developers often waste time trying to figure out what to focus on.
 ```
 [ RUN      ] ControlTestsV2.On3_DimTo_On2
