@@ -74,6 +74,10 @@ build$ GTEST_BRIEF=1 GTEST_FILTER=LightTests.* GTEST_REPEAT=10 GTEST_SHUFFLE=1 c
 
 You can find more [flags here](https://google.github.io/googletest/advanced.html). Note that passing flag `--gtest_shuffle` is equivalent to setting environment flag `GTEST_SHUFFLE=1`.
 
+# Going Further
+The [mock branch](https://github.com/adamfk/eoc-2026/tree/mock) shows how you can utilize FakeHal and MockHal. See [differences here](https://github.com/adamfk/eoc-2026/compare/main...mock).
+
+Even though I generally prefer fakes over mocks, it is definitely worth knowing how to use mocks.
 
 # Why Improve Error Messages?
 It's all about scale. Small problem for small designs. Big problem for big designs.
