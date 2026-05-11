@@ -4,7 +4,7 @@ extern "C"
 {
 #include "Lights.h"
 }
-#include "FakeHal.hpp"
+#include "doubles/FakeHal.hpp"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h> // for ::testing::ElementsAre
 

@@ -1,6 +1,6 @@
 include(GoogleTest)
 
-file(GLOB TEST_SOURCES CONFIGURE_DEPENDS *.cpp)
+file(GLOB TEST_SOURCES CONFIGURE_DEPENDS *.cpp **/*.cpp)
 
 add_executable(unit_tests ${TEST_SOURCES})
 

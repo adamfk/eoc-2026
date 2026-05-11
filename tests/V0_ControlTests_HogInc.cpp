@@ -6,7 +6,7 @@ extern "C"
 {
 #include "V0/Control.c" // NOTE!!! INCLUDING SOURCE FILE TO ACCESS PRIVATES!!!
 }
-#include "FakeHal.hpp"
+#include "doubles/FakeHal.hpp"
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 

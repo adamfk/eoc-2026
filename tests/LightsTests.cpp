@@ -2,7 +2,7 @@ extern "C"
 {
 #include "Lights.h"
 }
-#include "FakeHal.hpp"
+#include "doubles/FakeHal.hpp"
 #include <gtest/gtest.h>
 
 // we create a test fixture so that FakeHal is constructed fresh for every test.

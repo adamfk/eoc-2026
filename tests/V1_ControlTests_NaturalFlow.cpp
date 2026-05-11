@@ -6,7 +6,7 @@ extern "C"
 {
     #include "V1/Control.h"
 }
-#include "FakeHal.hpp"
+#include "doubles/FakeHal.hpp"
 #include "gtest_helpers.hpp"
 #include <gtest/gtest.h>
 

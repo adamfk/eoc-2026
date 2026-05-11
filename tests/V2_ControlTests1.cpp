@@ -8,7 +8,7 @@ extern "C"
 {
 #include "V2/Control.h"
 }
-#include "FakeHal.hpp"
+#include "doubles/FakeHal.hpp"
 #include "gtest_helpers.hpp"
 #include <gtest/gtest.h>
 #include <functional>
