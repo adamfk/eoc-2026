@@ -38,7 +38,7 @@ TEST(LightTests_Mock, Set_InOrder)
     Lights_set(1,0,0);
 }
 
-// we create a test fixture so that FakeHal is constructed fresh for every test.
+// we create a test fixture so that Hal is constructed fresh for every test.
 // we also put a small helper in there.
 class LightTests_MockFixture : public ::testing::Test
 {
