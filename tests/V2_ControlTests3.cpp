@@ -1,4 +1,5 @@
-// ✅ This provides the best stack trace information, although I find it a bit slower to write as all helper methods are wrapped.
+// ✅ This provides the best stack trace information, 
+// although I find it a bit slower to write as all helper invocations are wrapped in `ASSERT_CALL()`.
 
 // Shows an alternative to using SCOPED_TRACE_FUNC() and RETURN_IF_FAILURE() everywhere.
 // This provides calling site stack trace information.
